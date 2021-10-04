@@ -1,15 +1,22 @@
 const game = {
   title: 'Guess the Number!',
-  biggestNum: 100,
-  smallestNum: 1,
+  biggestNum: null,
+  smallestNum: null,
   secretNum: null,
   prevGuesses:[],
+  getBounds : function() {
+    alert("Welcome to Guess the Number game. " +
+    "Please enter a lower bound and an upper bound.");
+    this.smallestNum = parseInt(prompt("Enter the lower bound: "))
+    this.biggestNum = parseInt(prompt("Enter the upper bound: "))
+  },
   getGuess: function() {
     let guess = parseInt(prompt(`Enter a guess between ${this.smallestNum} 
     and ${this.biggestNum}.`))
     return guess
     },
   play: function() {
+    this.getBounds()
     this.secretNum = Math.floor(Math.random() * 
       (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
     while(this.prevGuesses[this.prevGuesses.length -1] !== this.secretNum){
@@ -35,8 +42,6 @@ const game = {
       alert(`Congrats! You guessed the number in ${this.prevGuesses.length} guesses.`)
     }
   }
-
-
 }
 
 game.play()
