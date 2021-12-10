@@ -45,4 +45,3 @@ const game = {
 }
 
 game.play()
-
